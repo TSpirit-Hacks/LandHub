@@ -194,56 +194,68 @@ function App() {
       {safeAuthSignInResponse?.eoa ? (
         <Grid container style={{ backgroundColor: "#ffe7b9", height: "100vh" }}>
           <div className="container">
-            <div className="main-card">
-              <div>
-                {user &&
-
-                  <div
-                    style={{
-                      flex: "1",
-                      margin: "10px",
-                      boxSizing: "border-box",
-                      justifyContent: "center",
-                      alignContent: "center",
-                      display: "flex",
-                      marginTop: "5%",
-                    }}
-                  >
-                    <span>
+                {user && (
+                  // <div
+                  //   style={{
+                  //     flex: "1",
+                  //     margin: "10px",
+                  //     boxSizing: "border-box",
+                  //     justifyContent: "center",
+                  //     alignContent: "center",
+                  //     display: "flex",
+                  //     marginTop: "5%",
+                  //   }}
+                  // >
+                    
                       <UserProfile
+                        
                         title="test"
                         address={safeAuthSignInResponse.eoa}
                         prefix={getPrefix("0x5")}
                       />
-                    </span>
-                  </div>
+                    
+                  //</div>
+                )}
 
-                }
-
-                {upi &&
-                  <div>
-                    <Modal isOpen={isModalOpen} onClose={closeModal}>
-                      <Crypto />
-                    </Modal>
-                  </div>
-
-                }
+                {upi && <Crypto />}
 
                 {kyc && <KYC />}
-              </div>
-            </div>
+          
           </div>
 
           <div>
             <div>
               <div className="sidenav">
-                <button onClick={() => { setShowUser(true); setKYC(false); setUPI(false) }}>1. Profile</button>
-                <button onClick={() => { setKYC(true); setShowUser(false); setUPI(false) }}>2. KYC</button>
-                <button onClick={() => { setUPI(true); setShowUser(false); setKYC(false) }}>3. Load Crypto via UPI</button>
+                <button
+                  onClick={() => {
+                    setShowUser(true);
+                    setKYC(false);
+                    setUPI(false);
+                  }}
+                >
+                  1. Profile
+                </button>
+                <button
+                  onClick={() => {
+                    setKYC(true);
+                    setShowUser(false);
+                    setUPI(false);
+                  }}
+                >
+                  2. KYC
+                </button>
+                <button
+                  onClick={() => {
+                    setUPI(true);
+                    setShowUser(false);
+                    setKYC(false);
+                  }}
+                >
+                  3. Load Crypto via UPI
+                </button>
                 <button>4. Land NFT</button>
               </div>
             </div>
-
           </div>
 
           <Grid item md={4} p={4}>

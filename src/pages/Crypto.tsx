@@ -96,8 +96,7 @@ const Crypto: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="modal">
+    <div className="upi_card main-card">
         <form className="form" onSubmit={handleSubmit}>
           <div className="credit-card-info--form">
             <div className="input_container">
@@ -139,8 +138,8 @@ const Crypto: React.FC = () => {
           </button>
           {successMessage}
         </form>
-      </div>
-    </>
+      
+        </div>
   );
 };
 

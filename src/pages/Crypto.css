@@ -151,8 +151,6 @@
 /* kyc */
 .kyc_card {
   position: relative;
-  width: 350px;
-  height: 250px;
   background-image: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
   border-radius: 10px;
   display: flex;
@@ -160,9 +158,12 @@
   flex-direction: column;
   gap: 10px;
   align-items: center;
-  justify-content: center;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.upi_card {
+  background-image: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
 }
 
 .heading {

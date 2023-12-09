@@ -32,7 +32,7 @@ export default function KYC() {
 
     return (
         <>
-            <div className="kyc_card">
+            <div className="main-card kyc_card">
                 <p className="para">Annon Adhar (KYC)
                 </p>
                 <AnonAadhaarProvider _appId={app_id}>
