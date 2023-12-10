@@ -4,11 +4,48 @@ import { ethers } from 'ethers';
 const infuraProjectEndpoint = "0e4858b4811142ea923560c46cdab969"
 
 export async function mintNFT() {
-    const provider = new ethers.JsonRpcProvider(`https://goerli.infura.io/v3/${infuraProjectEndpoint}`);
+    const provider = new ethers.JsonRpcProvider(`https://arbitrum-goerli.infura.io/v3/${infuraProjectEndpoint}`);
     const signer = new ethers.Wallet('f73d60156cfa54d497c22e384253e2ce9fedc399f414088a798beea374273e56', provider);
-    const contractAddress = '0x2605429849FD4B82Efc4B1A62d51f397D2daCFD9';
+    const contractAddress = '0xaBEBcfa8F5D99d61874495D901053dE2A5A712f9';
     //const contractABI = JSON.parse(fs.readFileSync('./ABI.json').toString());
     const contractABI = [
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "approve",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "tokenURI",
+                    "type": "string"
+                }
+            ],
+            "name": "createNFT",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
         {
             "inputs": [],
             "stateMutability": "nonpayable",
@@ -241,6 +278,82 @@ export async function mintNFT() {
             "type": "event"
         },
         {
+            "inputs": [],
+            "name": "renounceOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                }
+            ],
+            "name": "safeTransferFrom",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "bytes",
+                    "name": "data",
+                    "type": "bytes"
+                }
+            ],
+            "name": "safeTransferFrom",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "operator",
+                    "type": "address"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "approved",
+                    "type": "bool"
+                }
+            ],
+            "name": "setApprovalForAll",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
             "anonymous": false,
             "inputs": [
                 {
@@ -269,6 +382,11 @@ export async function mintNFT() {
             "inputs": [
                 {
                     "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
                     "name": "to",
                     "type": "address"
                 },
@@ -278,7 +396,20 @@ export async function mintNFT() {
                     "type": "uint256"
                 }
             ],
-            "name": "approve",
+            "name": "transferFrom",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "newOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "transferOwnership",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
@@ -300,25 +431,6 @@ export async function mintNFT() {
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "string",
-                    "name": "tokenURI",
-                    "type": "string"
-                }
-            ],
-            "name": "createNFT",
-            "outputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "stateMutability": "nonpayable",
             "type": "function"
         },
         {
@@ -410,82 +522,6 @@ export async function mintNFT() {
             "type": "function"
         },
         {
-            "inputs": [],
-            "name": "renounceOwnership",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "from",
-                    "type": "address"
-                },
-                {
-                    "internalType": "address",
-                    "name": "to",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "tokenId",
-                    "type": "uint256"
-                }
-            ],
-            "name": "safeTransferFrom",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "from",
-                    "type": "address"
-                },
-                {
-                    "internalType": "address",
-                    "name": "to",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "tokenId",
-                    "type": "uint256"
-                },
-                {
-                    "internalType": "bytes",
-                    "name": "data",
-                    "type": "bytes"
-                }
-            ],
-            "name": "safeTransferFrom",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "operator",
-                    "type": "address"
-                },
-                {
-                    "internalType": "bool",
-                    "name": "approved",
-                    "type": "bool"
-                }
-            ],
-            "name": "setApprovalForAll",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
             "inputs": [
                 {
                     "internalType": "bytes4",
@@ -534,42 +570,6 @@ export async function mintNFT() {
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "from",
-                    "type": "address"
-                },
-                {
-                    "internalType": "address",
-                    "name": "to",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "tokenId",
-                    "type": "uint256"
-                }
-            ],
-            "name": "transferFrom",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "newOwner",
-                    "type": "address"
-                }
-            ],
-            "name": "transferOwnership",
-            "outputs": [],
-            "stateMutability": "nonpayable",
             "type": "function"
         }
     ]

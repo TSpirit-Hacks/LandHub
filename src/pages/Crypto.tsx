@@ -4,14 +4,18 @@ import Modal from "./../common/Modal";
 import { ethers } from "ethers";
 
 import "./Crypto.css";
-
-const Crypto: React.FC = () => {
+interface ModalProps {
+  address:any;
+  prefix:string
+}
+const Crypto: React.FC <ModalProps> = ({address,prefix}) => {
   const [formData, setFormData] = useState({
     to: "onmodal@kotapay",
     upiUserInput: "",
-    upiUserMoney: 1,
+    upiUserMoney: 0.0001,
   });
-
+  const accountAddress = address;
+  const currencyPrefix = getPrefix(prefix || "0x5");
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [accountBalance, setAccountBalance] = useState<string>();
   const getExampleXml = () => `
@@ -47,7 +51,7 @@ const Crypto: React.FC = () => {
     console.log(
       `Destination balance before sending: ${ethers.formatEther(
         balanceBefore
-      )} ETH`
+      )} ${currencyPrefix}`
     );
     console.log("Sending...\n");
 
@@ -68,7 +72,7 @@ const Crypto: React.FC = () => {
     console.log(
       `Destination balance after sending: ${ethers.formatEther(
         balanceAfter
-      )} ETH`
+      )} ${currencyPrefix}`
     );
     setAccountBalance(ethers.formatEther(
       balanceAfter
@@ -138,7 +142,7 @@ const Crypto: React.FC = () => {
 
       if (match && match[1] === "00") {
         setSuccessMessage("Transaction successful!");
-        await sendCrypto("0x74d5F05E2E62BbA8aCc37cdCA8395776d866079c");
+        await sendCrypto(accountAddress||"0x74d5F05E2E62BbA8aCc37cdCA8395776d866079c");
       } else {
         setSuccessMessage(null);
       }
@@ -211,10 +215,24 @@ const Crypto: React.FC = () => {
           Checkout
         </button>
         {successMessage}
-        Your crypto balance is {accountBalance} ETH
+        Your crypto balance is {accountBalance} {currencyPrefix}
       </form>
     </div>
   );
 };
 
+const getPrefix = (chainId: string) => {
+  switch (chainId) {
+    case "0x1":
+      return "eth";
+    case "0x5":
+      return "gor";
+    case "0x100":
+      return "gno";
+    case "0x137":
+      return "matic";
+    default:
+      return "eth";
+  }
+};
 export default Crypto;
