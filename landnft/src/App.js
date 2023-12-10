@@ -109,7 +109,7 @@ function App() {
 // }
 
   return (
-    <> <div className="App" style={{ backgroundImage: 'url("/landNft.png")', backgroundSize: 'cover', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div className="App" style={{ backgroundImage: 'url("/landNft.png")', backgroundSize: 'cover', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <div className="main-card kyc_card">
 
         <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '10px', textAlign: 'center' }}>
@@ -127,7 +127,6 @@ function App() {
         </>}
       </div>
     </div>
-    </>
 
   )
 }

@@ -188,7 +188,8 @@ function App() {
       <AppBar
         onLogin={login}
         onLogout={logout}
-        userInfo={userInfo}
+        userEmail={userInfo?.email}
+        userName={userInfo?.name}
         isLoggedIn={!!provider}
       />
       {safeAuthSignInResponse?.eoa ? (
