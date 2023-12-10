@@ -173,7 +173,7 @@ function App() {
     { id: 2, name: "UPI", imgSrc: "images/upi.png" },
     { id: 3, name: "Light House", imgSrc: "images/lighthouse.png" },
     { id: 4, name: "API Setu", imgSrc: "images/api-setu.png" },
-    { id: 5, name: "Adhar Annon", imgSrc: "images/adhar.png" },
+    { id: 5, name: "Aadhar Annon", imgSrc: "images/adhar.png" },
     // { id: 6, name: "Polygon", imgSrc: "images/polygon.png" },
   ];
 
