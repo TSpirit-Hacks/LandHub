@@ -194,33 +194,31 @@ function App() {
       {safeAuthSignInResponse?.eoa ? (
         <Grid container style={{ backgroundColor: "#ffe7b9", height: "100vh" }}>
           <div className="container">
-                {user && (
-                  // <div
-                  //   style={{
-                  //     flex: "1",
-                  //     margin: "10px",
-                  //     boxSizing: "border-box",
-                  //     justifyContent: "center",
-                  //     alignContent: "center",
-                  //     display: "flex",
-                  //     marginTop: "5%",
-                  //   }}
-                  // >
-                    
-                      <UserProfile
-                        
-                        title="test"
-                        address={safeAuthSignInResponse.eoa}
-                        prefix={getPrefix("0x5")}
-                      />
-                    
-                  //</div>
-                )}
+            {user && (
+              // <div
+              //   style={{
+              //     flex: "1",
+              //     margin: "10px",
+              //     boxSizing: "border-box",
+              //     justifyContent: "center",
+              //     alignContent: "center",
+              //     display: "flex",
+              //     marginTop: "5%",
+              //   }}
+              // >
 
-                {upi && <Crypto />}
+              <UserProfile
+                title="test"
+                address={safeAuthSignInResponse.eoa}
+                prefix={getPrefix("0x5")}
+              />
 
-                {kyc && <KYC />}
-          
+              //</div>
+            )}
+
+            {upi && <Crypto />}
+
+            {kyc && <KYC />}
           </div>
 
           <div>
@@ -253,7 +251,15 @@ function App() {
                 >
                   3. Load Crypto via UPI
                 </button>
-                <button>4. Land NFT</button>
+                <button
+                  onClick={() => {
+                    setUPI(false);
+                    setShowUser(false);
+                    setKYC(false);
+                  }}
+                >
+                  4. Land NFT
+                </button>
               </div>
             </div>
           </div>

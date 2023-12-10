@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.kyc_card {
+  position: relative;
+  background-image: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+  border-radius: 10px;
+  display: flex;
+  padding: 10px 30px;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.main-card {
+  justify-content: center;
+  width: 100%; 
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 500px;
+  height: 384px;
+}

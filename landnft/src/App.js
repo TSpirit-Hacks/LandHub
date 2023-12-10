@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import lighthouse from "@lighthouse-web3/sdk"
+import './App.css'
 
 function App() {
   const [file, setFile] = useState(null)
@@ -58,7 +59,7 @@ function App() {
         apiKey,
         signerAddress,
         signature,
-        ()=>{}
+        () => { }
       )
       console.log("Encrypted File Status:", output)
       /* Sample Response
@@ -88,12 +89,19 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={uploadEncryptedFile} disabled={!file}>
-        Upload Encrypted File
-      </button>
+    <> <div className="App" style={{ backgroundImage: 'url("/landNft.png")', backgroundSize: 'cover', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div className="main-card kyc_card">
+
+        <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '10px', textAlign: 'center' }}>
+          <input type="file" onChange={handleFileChange} />
+          <button onClick={uploadEncryptedFile} disabled={!file}>
+            Upload Encrypted File
+          </button>
+        </div>
+      </div>
     </div>
+    </>
+
   )
 }
 
