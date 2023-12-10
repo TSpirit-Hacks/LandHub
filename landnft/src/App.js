@@ -1,9 +1,13 @@
 import React, { useState } from "react"
 import lighthouse from "@lighthouse-web3/sdk"
 import './App.css'
+import { ethers } from 'ethers';
+// import fs from 'fs';
+import {mintNFT} from './mintNFT.mjs'
 
 function App() {
   const [file, setFile] = useState(null)
+  const [mintMsg,setMintMsg]=useState("")
 
   // Define your API Key (should be replaced with secure environment variables in production)
   const apiKey = "530c7202.e2796d3c57ed49c78094efd6bb066da8"
@@ -62,6 +66,9 @@ function App() {
         () => { }
       )
       console.log("Encrypted File Status:", output)
+      if(output){
+        setMintMsg("File Uploaded successfully")
+      }
       /* Sample Response
         {
           data: [
@@ -88,6 +95,19 @@ function App() {
     }
   }
 
+  const infuraProjectEndpoint = "0e4858b4811142ea923560c46cdab969"
+
+// async function mintNFT() {
+//     const provider = new ethers.JsonRpcProvider(`https://goerli.infura.io/v3/${infuraProjectEndpoint}`);
+//     const signer = new ethers.Wallet('f73d60156cfa54d497c22e384253e2ce9fedc399f414088a798beea374273e56', provider);
+//     const contractAddress = '0x2605429849FD4B82Efc4B1A62d51f397D2daCFD9';
+//     const contractABI = JSON.parse(fs.readFileSync('./ABI.json').toString());
+
+//     const contract = new ethers.Contract(contractAddress, contractABI, signer);
+//     const tokenId = await contract.createNFT('QmQUTc5ooP6GZtKY2YdW4jJiSdzt2egBNPSmo43EuFPrgu');
+//     console.log('NFT Minted, Token ID:', tokenId.toString());
+// }
+
   return (
     <> <div className="App" style={{ backgroundImage: 'url("/landNft.png")', backgroundSize: 'cover', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <div className="main-card kyc_card">
@@ -98,6 +118,13 @@ function App() {
             Upload Encrypted File
           </button>
         </div>
+        {mintMsg && <>✅ {mintMsg}
+        <br/>
+        <button onClick={()=>{
+          const token=  mintNFT;
+          setMintMsg("NFT Minted Successfully!!!")
+          }}>Mint NFT</button>
+        </>}
       </div>
     </div>
     </>
